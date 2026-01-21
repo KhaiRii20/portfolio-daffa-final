@@ -1,26 +1,32 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
-import Contact from "@/components/Contact";
+import Projects from "@/components/Projects"; // Komponen baru
+import SocialSidebar from "@/components/SocialSidebar"; // Komponen baru
 import AnimatedBackground from "@/components/AnimatedBackground";
 
 export default function Home() {
   return (
-    // Class 'bg-background' dihapus dari sini agar AnimatedBackground terlihat
     <main className="relative min-h-screen overflow-hidden text-deep-dark font-sans">
       
-      {/* Background diletakkan paling atas agar dirender duluan di layer belakang */}
+      {/* Layer 1: Background Animasi */}
       <AnimatedBackground />
       
+      {/* Layer 2: Navigasi & Sidebar Fixed */}
       <Navbar />
+      <SocialSidebar />
       
-      {/* Konten Utama */}
-      <div className="relative z-10 flex flex-col gap-10"> 
+      {/* Layer 3: Konten Scrollable */}
+      <div className="relative z-10 flex flex-col gap-16 pb-24"> 
+        {/* pb-24 memberi jarak di paling bawah agar tidak mepet */}
+        
         <Hero />
+        
         <About />
-        <Contact />
+        
+        <Projects />
+        
       </div>
-      
     </main>
   );
 }
